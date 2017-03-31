@@ -109,6 +109,7 @@ class OpenloadIE(InfoExtractor):
             js_code = self._search_regex(
                 r"(ﾟωﾟﾉ=.*?\('_'\);.*?)ﾟωﾟﾉ= /｀ｍ´）ﾉ ~┻━┻   //\*´∇｀\*/ \['_'\];",
                 webpage, 'openload decrypt code', flags=re.S)
+            js_code = re.sub('''if\s*\([^\}]+?typeof[^\}]+?\}''', '', js_code)
         except:
             raise DecodeError('Could not find JavaScript')
 
